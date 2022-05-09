@@ -1,4 +1,6 @@
 module.exports = {
-  arrowParens: "avoid",
   printWidth: 120,
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  importOrder: ["<THIRD_PARTY_MODULES>", "^[./]"],
 };
