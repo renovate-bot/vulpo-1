@@ -10,17 +10,25 @@ interface Props {
       slug: string;
       title: string;
       description?: string;
+      edit?: string;
       color?: string;
       content: string;
       parent: {
         title: string;
         url: string;
+        categories: {
+          title: string;
+          url: string;
+        }[];
         pages: {
           title: string;
           slug: string;
           url: string;
         }[];
       };
+      authors: {
+        name: string;
+      }[];
     };
   };
 }
@@ -32,8 +40,9 @@ const Article = ({ data }: Props) => {
     <>
       <SEO title={article.title} description={article.description} />
       <Lecture
-        breadcrumbs={[...[], { title: article.parent.title, url: article.parent.url }]}
-        authors={[]}
+        breadcrumbs={[...(article.parent.categories || []), { title: article.parent.title, url: article.parent.url }]}
+        editUrl={article.edit}
+        authors={article.authors}
         color={article.color}
         pages={article.parent.pages}
         active={article.slug}
@@ -49,17 +58,25 @@ export const query = graphql`
       title
       slug
       content
+      edit
       color
       parent {
         ... on LexiconLesson {
           title
           url
+          categories {
+            title
+            url
+          }
           pages {
             title
             slug
             url
           }
         }
+      }
+      authors {
+        name
       }
     }
   }

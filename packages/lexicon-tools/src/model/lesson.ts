@@ -4,12 +4,11 @@ import { Lexicon } from "./lexicon";
 import { Page } from "./page";
 
 export interface LessonConfig {
-  path: string;
   title: string;
   slug: string;
-  description: string;
-  pages: string[];
-  authors: string[];
+  description?: string;
+  pages?: string[];
+  authors?: string[];
 }
 
 interface LessonArgs {
@@ -44,6 +43,10 @@ export class Lesson {
     return this.config.slug;
   }
 
+  get categories(): Category[] {
+    return [...this.parent.categories, this.parent];
+  }
+
   get description(): string | undefined {
     if (this.config.description) return this.config.description;
     if (this.pages.length === 0) return undefined;
@@ -59,6 +62,6 @@ export class Lesson {
   }
 
   get authors(): Author[] {
-    return this.config.authors.flatMap((author) => this.lexicon.authors.find((_) => _.slug === author) || []);
+    return (this.config.authors || []).flatMap((author) => this.lexicon.authors.find((_) => _.slug === author) || []);
   }
 }

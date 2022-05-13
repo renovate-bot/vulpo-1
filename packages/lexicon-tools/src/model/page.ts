@@ -1,3 +1,4 @@
+import { Author } from "./author";
 import { Lesson } from "./lesson";
 import { Lexicon } from "./lexicon";
 
@@ -5,6 +6,7 @@ export interface PageConfig {
   title: string;
   slug: string;
   description?: string;
+  authors?: string[];
 }
 
 export interface PageArgs<T extends PageConfig> {
@@ -51,7 +53,19 @@ export abstract class Page<T extends PageConfig> {
     return `${this.parent.url}/${this.config.slug}`;
   }
 
+  get edit(): string | undefined {
+    if (!this.lexicon.options.edit) return undefined;
+    return `${this.lexicon.options.edit}/${this.path}`;
+  }
+
   get color(): string | undefined {
     return this.parent.color;
+  }
+
+  get authors(): Author[] {
+    return [
+      ...this.parent.authors.concat(),
+      ...(this.config.authors || []).flatMap((author) => this.lexicon.authors.find((_) => _.slug === author) || []),
+    ];
   }
 }
