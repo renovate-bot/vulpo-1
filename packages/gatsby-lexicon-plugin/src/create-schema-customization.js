@@ -1,7 +1,36 @@
-import { Article } from "@lukasnehrke/lexicon-tools";
+import { nodes } from "./source-nodes.js";
 
 /** @param args {import("gatsby").CreateSchemaCustomizationArgs} */
 export default (args) => {
+  const pageResolvers = {
+    id: { type: "ID!" },
+    path: { type: "String!" },
+    absolutePath: { type: "String!" },
+    lexiconId: { type: "String" },
+    title: { type: "String!" },
+    slug: { type: "String!" },
+    url: { type: "String!" },
+    description: { type: "String" },
+    edit: { type: "String" },
+    color: { type: "String" },
+    previous: {
+      type: "LexiconArticlePage",
+      async resolve(node, args, context) {
+        const id = nodes[node.id].previous?.__gatsbyId;
+        if (id) return context.nodeModel.getNodeById({ id });
+        return null;
+      },
+    },
+    next: {
+      type: "LexiconArticlePage",
+      async resolve(node, args, context) {
+        const id = nodes[node.id].next?.__gatsbyId;
+        if (id) return context.nodeModel.getNodeById({ id });
+        return null;
+      },
+    },
+  };
+
   args.actions.createTypes([
     args.schema.buildObjectType({
       name: "LexiconAuthor",
@@ -49,21 +78,24 @@ export default (args) => {
     args.schema.buildObjectType({
       name: "LexiconArticlePage",
       fields: {
-        id: { type: "ID!" },
-        path: { type: "String!" },
-        absolutePath: { type: "String!" },
-        lexiconId: { type: "String" },
-        title: { type: "String!" },
-        slug: { type: "String!" },
-        url: { type: "String!" },
-        description: { type: "String" },
-        edit: { type: "String" },
-        color: { type: "String" },
+        ...pageResolvers,
         source: { type: "String!" },
+        createdAt: {
+          type: "Date",
+          async resolve(node) {
+            return nodes[node.id].getCreatedAt();
+          },
+        },
+        updatedAt: {
+          type: "Date",
+          async resolve(node) {
+            return nodes[node.id].getUpdatedAt();
+          },
+        },
         content: {
           type: "String!",
           async resolve(node) {
-            return Article.generateMdx(node.source);
+            return nodes[node.id].build();
           },
         },
         toc: {
@@ -71,11 +103,11 @@ export default (args) => {
           args: {
             depth: {
               type: "Int",
-              default: 3,
+              default: 2,
             },
           },
           async resolve(node, { depth }) {
-            return Article.generateToc(node.source);
+            return nodes[node.id].buildTOC({ depth });
           },
         },
       },

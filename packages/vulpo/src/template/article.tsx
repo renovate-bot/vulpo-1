@@ -16,6 +16,16 @@ interface Props {
       color?: string;
       toc: string;
       content: string;
+      createdAt: string;
+      updatedAt: string;
+      next?: {
+        title: string;
+        url: string;
+      };
+      previous?: {
+        title: string;
+        url: string;
+      };
       parent: {
         title: string;
         url: string;
@@ -23,7 +33,7 @@ interface Props {
           title: string;
           url: string;
         }[];
-        pages: {
+        children: {
           title: string;
           slug: string;
           url: string;
@@ -38,7 +48,6 @@ interface Props {
 
 const Article = ({ data }: Props) => {
   const article = data.lexiconArticlePage;
-
   return (
     <>
       <SEO title={article.title} description={article.description} />
@@ -55,10 +64,14 @@ const Article = ({ data }: Props) => {
         editUrl={article.edit}
         authors={article.authors}
         color={article.color}
-        pages={article.parent.pages}
+        pages={article.parent.children}
+        next={article.next}
+        previous={article.previous}
         active={article.slug}
         toc={article.toc}
         content={<MDX body={article.content} />}
+        createdAt={new Date(article.createdAt).toLocaleDateString("de-DE")}
+        updatedAt={new Date(article.updatedAt).toLocaleDateString("de-DE")}
       />
     </>
   );
@@ -73,6 +86,16 @@ export const query = graphql`
       edit
       color
       toc
+      createdAt
+      updatedAt
+      next {
+        title
+        url
+      }
+      previous {
+        title
+        url
+      }
       parent {
         ... on LexiconLesson {
           title
@@ -81,10 +104,12 @@ export const query = graphql`
             title
             url
           }
-          pages {
-            title
-            slug
-            url
+          children {
+            ... on LexiconArticlePage {
+              title
+              slug
+              url
+            }
           }
         }
       }
