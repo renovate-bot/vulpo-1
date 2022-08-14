@@ -2,7 +2,7 @@ import type { Plugin } from "unified";
 
 export const remarkAdmonitions: Plugin = () => {
   return async (tree) => {
-    const { visit } = await import(`unist-util-visit`);
+    const { visit } = await import("unist-util-visit");
 
     visit(tree, (node: any) => {
       if (node.type === "containerDirective") {

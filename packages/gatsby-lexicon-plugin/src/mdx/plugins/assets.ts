@@ -4,7 +4,7 @@ import type { Plugin } from "unified";
 
 export const remarkAssets: Plugin = () => {
   return async (tree, file) => {
-    const { visit } = await import(`unist-util-visit`);
+    const { visit } = await import("unist-util-visit");
     const { default: isRelativeUrl } = await import("is-relative-url");
 
     const dest = path.resolve(process.cwd(), "public", "_lexicon");

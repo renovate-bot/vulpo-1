@@ -22,8 +22,8 @@ export const createArticleSchema: CreateSchema = async (args, options) => {
         },
         content: {
           type: "String!",
-          async resolve(node) {
-            const { mdx } = await compileMdx({ path: node.source });
+          async resolve(node, args, context, info) {
+            const { mdx } = await compileMdx({ path: node.source, node, context, info });
             return mdx;
           },
         },
@@ -35,8 +35,8 @@ export const createArticleSchema: CreateSchema = async (args, options) => {
               default: 3,
             },
           },
-          async resolve(node) {
-            const { toc } = await compileMdx({ path: node.source });
+          async resolve(node, args, context, info) {
+            const { toc } = await compileMdx({ path: node.source, node, context, info });
             return toc;
           },
         },

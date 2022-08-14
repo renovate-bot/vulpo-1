@@ -149,7 +149,7 @@ Die beiden Lösungen der Gleichung sind also $x_1=0$ und $x_2=-2$.
 Liegt weder Form (1) noch Form (2) vor, dann kann man die Lösungen nicht durch einfaches Umformen
 bestimmen.  
 Um Gleichungen in allgemeiner Form zu lösen, benötigt man die
-[Mitternachtsformel](../Mitternachtsformel). Setzt man die Koeffizienten $a$, $b$ und $c$ in die
+[Mitternachtsformel](../mitternachtsformel). Setzt man die Koeffizienten $a$, $b$ und $c$ in die
 Formel ein, ergeben sich die Lösungen $x_1$ und $x_2$.
 
 $$
