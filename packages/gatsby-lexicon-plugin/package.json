@@ -34,7 +34,7 @@
     "remark-directive": "2.0.1",
     "remark-gfm": "3.0.1",
     "remark-math": "5.1.1",
-    "unist-util-visit": "4.1.0",
+    "unist-util-visit": "4.1.1",
     "vfile": "5.3.4"
   },
   "devDependencies": {
