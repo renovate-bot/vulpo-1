@@ -3286,7 +3286,7 @@ __metadata:
   dependencies:
     "@babel/cli": 7.18.10
     "@babel/core": 7.18.13
-    "@mdx-js/mdx": 2.1.2
+    "@mdx-js/mdx": 2.1.3
     babel-preset-gatsby-package: 2.22.0
     gatsby: 4.22.0
     gatsby-source-filesystem: 4.22.0
@@ -3301,15 +3301,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mdx-js/mdx@npm:2.1.2":
-  version: 2.1.2
-  resolution: "@mdx-js/mdx@npm:2.1.2"
+"@mdx-js/mdx@npm:2.1.3":
+  version: 2.1.3
+  resolution: "@mdx-js/mdx@npm:2.1.3"
   dependencies:
-    "@types/estree-jsx": ^0.0.1
+    "@types/estree-jsx": ^1.0.0
     "@types/mdx": ^2.0.0
-    astring: ^1.6.0
     estree-util-build-jsx: ^2.0.0
     estree-util-is-identifier-name: ^2.0.0
+    estree-util-to-js: ^1.1.0
     estree-walker: ^3.0.0
     hast-util-to-estree: ^2.0.0
     markdown-extensions: ^1.0.0
@@ -3322,7 +3322,7 @@ __metadata:
     unist-util-stringify-position: ^3.0.0
     unist-util-visit: ^4.0.0
     vfile: ^5.0.0
-  checksum: ca4de4ea018a0af9e4bdd9fcd944654eeb7c4fd9c8abf6e239c681162d4f8d2252a0d2c140789ca95bd1323976df5b86ecd34d93a25c6411d99e8f8355f3be01
+  checksum: e13628758c47416beb38589036e9b3b96a647394afa9a93ce6f7b17b6f0bca07b8da6499ae3b9d2792b52e556e70ac099cb869119ecd0c024f284be3a1981c63
   languageName: node
   linkType: hard
 
@@ -4412,6 +4412,15 @@ __metadata:
   dependencies:
     "@types/estree": "*"
   checksum: aed43dfcbcc9c881f571618847661cd69026680466657d1443c12f51d835c7a8ccf5109a800e56c8fc33ae093f096aa937e4656ce3eb71c4f914334c389cf7be
+  languageName: node
+  linkType: hard
+
+"@types/estree-jsx@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@types/estree-jsx@npm:1.0.0"
+  dependencies:
+    "@types/estree": "*"
+  checksum: 851d7afb63a89fb9ce7822563930660433f29106d72db279ce9c99f791ec996ef21b05adc6f545325cd1745b3041cc86422f0ffa39a06734305b90cfbc871765
   languageName: node
   linkType: hard
 
@@ -5849,7 +5858,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astring@npm:^1.6.0":
+"astring@npm:^1.8.0":
   version: 1.8.3
   resolution: "astring@npm:1.8.3"
   bin:
@@ -9418,6 +9427,17 @@ __metadata:
   version: 2.0.1
   resolution: "estree-util-is-identifier-name@npm:2.0.1"
   checksum: d91693dc1c8e7f9860e5c73d3f2e0ad4fc484dc9df432086e0432c27c89f1690fe3c63f0d608d11bce77bb026a4edef434c28da5cbad0761d0292741a96b1481
+  languageName: node
+  linkType: hard
+
+"estree-util-to-js@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "estree-util-to-js@npm:1.1.0"
+  dependencies:
+    "@types/estree-jsx": ^1.0.0
+    astring: ^1.8.0
+    source-map: ^0.7.0
+  checksum: 3ce2ef2fd78497fa7a0e5250be0f217af9060c819f7ed4f4739285e4ade4ed244536cb88e8ba1e38986af98d3a9064165122bb1622f2c6d57fe7b241b884fc47
   languageName: node
   linkType: hard
 
@@ -18344,7 +18364,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map@npm:^0.7.3":
+"source-map@npm:^0.7.0, source-map@npm:^0.7.3":
   version: 0.7.4
   resolution: "source-map@npm:0.7.4"
   checksum: 01cc5a74b1f0e1d626a58d36ad6898ea820567e87f18dfc9d24a9843a351aaa2ec09b87422589906d6ff1deed29693e176194dc88bcae7c9a852dc74b311dbf5
