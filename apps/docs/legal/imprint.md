@@ -28,8 +28,3 @@ vor einer Verbraucherschlichtungsstelle teilzunehmen.
 ## Datenschutz
 
 Informationen zum Datenschutz finden Sie [hier](./privacy).
-
-## Weitere Webpräsenzen
-
-- [https://github.com/lukasnehrke](https://github.com/lukasnehrke)
-- [https://github.com/lukasnehrke/vulpo](https://github.com/lukasnehrke/vulpo)
