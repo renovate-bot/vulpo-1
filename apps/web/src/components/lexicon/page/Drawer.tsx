@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { DocumentTextIcon } from "@heroicons/react/outline";
+import { DocumentTextIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import { Link } from "gatsby";
 import * as React from "react";

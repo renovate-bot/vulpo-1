@@ -1,5 +1,5 @@
-import { BookOpenIcon } from "@heroicons/react/outline";
-import { ChevronRightIcon } from "@heroicons/react/solid";
+import { BookOpenIcon } from "@heroicons/react/24/outline";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import * as React from "react";
 
 import GithubIcon from "../components/icons/GithubIcon";

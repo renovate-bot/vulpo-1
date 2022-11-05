@@ -1,5 +1,4 @@
-import { DocumentTextIcon } from "@heroicons/react/solid";
-import { FolderIcon } from "@heroicons/react/solid";
+import { DocumentTextIcon, FolderIcon } from "@heroicons/react/24/solid";
 import { graphql } from "gatsby";
 import * as React from "react";
 

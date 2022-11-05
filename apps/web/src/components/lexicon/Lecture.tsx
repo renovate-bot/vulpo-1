@@ -1,7 +1,5 @@
-import { DocumentDuplicateIcon } from "@heroicons/react/outline";
-import { DocumentTextIcon } from "@heroicons/react/outline";
-import { PencilIcon } from "@heroicons/react/solid";
-import { ExclamationCircleIcon } from "@heroicons/react/solid";
+import { DocumentDuplicateIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
+import { ExclamationCircleIcon, PencilIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import * as React from "react";
 

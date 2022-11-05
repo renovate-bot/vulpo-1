@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { DocumentTextIcon, FolderIcon, SearchIcon } from "@heroicons/react/solid";
+import { DocumentTextIcon, FolderIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import algolia, { SearchClient } from "algoliasearch/lite";
 import { StaticImage } from "gatsby-plugin-image";
 import * as React from "react";
@@ -102,7 +102,7 @@ const Search = () => {
         onClick={() => setIsOpen(true)}
         className="flex items-center px-4 w-72 h-9 text-slate-400 bg-slate-100 dark:bg-slate-700"
       >
-        <SearchIcon className="mr-2 w-4 h-4" />
+        <MagnifyingGlassIcon className="mr-2 w-4 h-4" />
         <span>Suchen..</span>
       </button>
       <Transition appear show={open} as={React.Fragment}>
@@ -122,7 +122,7 @@ const Search = () => {
                 {client && (
                   <InstantSearch indexName="lexicon" searchClient={client}>
                     <div className="flex items-center px-4 py-4 border-b">
-                      <SearchIcon className="h-5 w-5 mr-3 text-slate-500" />
+                      <MagnifyingGlassIcon className="h-5 w-5 mr-3 text-slate-500" />
                       <AlgoliaSearch />
                     </div>
                     <AlgoliaHits />

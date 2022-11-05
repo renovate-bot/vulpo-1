@@ -1,4 +1,4 @@
-import { MenuIcon } from "@heroicons/react/solid";
+import { Bars4Icon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import { Link, graphql, useStaticQuery } from "gatsby";
 import * as React from "react";
@@ -30,7 +30,7 @@ const Navbar = () => {
           onClick={onMenuClick}
           className="inline-flex items-center justify-center p-3 rounded-md text-gray-500 dark:text-white focus:outline-none"
         >
-          <MenuIcon className="block h-6 w-6" aria-hidden="true" />
+          <Bars4Icon className="block h-6 w-6" aria-hidden="true" />
         </button>
       </div>
       <div className="flex items-center justify-center sm:justify-start px-4 h-full w-full">

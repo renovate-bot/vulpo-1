@@ -1,6 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { MoonIcon, SunIcon } from "@heroicons/react/outline";
-import { AdjustmentsIcon } from "@heroicons/react/outline";
+import { AdjustmentsHorizontalIcon, MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import React from "react";
 
@@ -33,26 +32,35 @@ const Icon = () => {
       >
         <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white dark:bg-slate-800 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="px-1 py-1">
-            <Menu.Item onClick={() => setScheme("light")}>
+            <Menu.Item>
               {({ active }) => (
-                <button className={clsx({ "bg-theme text-white": scheme === "light" || active }, cssItem)}>
+                <button
+                  onClick={() => setScheme("light")}
+                  className={clsx({ "bg-theme text-white": scheme === "light" || active }, cssItem)}
+                >
                   <SunIcon className="w-5 h-5 mr-2" />
                   Hell
                 </button>
               )}
             </Menu.Item>
-            <Menu.Item onClick={() => setScheme("dark")}>
+            <Menu.Item>
               {({ active }) => (
-                <button className={clsx({ "bg-theme text-white": scheme === "dark" || active }, cssItem)}>
+                <button
+                  onClick={() => setScheme("dark")}
+                  className={clsx({ "bg-theme text-white": scheme === "dark" || active }, cssItem)}
+                >
                   <MoonIcon className="w-5 h-5 mr-2" />
                   Dunkel
                 </button>
               )}
             </Menu.Item>
-            <Menu.Item onClick={() => setScheme("system")}>
+            <Menu.Item>
               {({ active }) => (
-                <button className={clsx({ "bg-theme text-white": scheme === "system" || active }, cssItem)}>
-                  <AdjustmentsIcon className="w-5 h-5 mr-2" />
+                <button
+                  onClick={() => setScheme("system")}
+                  className={clsx({ "bg-theme text-white": scheme === "system" || active }, cssItem)}
+                >
+                  <AdjustmentsHorizontalIcon className="w-5 h-5 mr-2" />
                   System
                 </button>
               )}
@@ -73,7 +81,7 @@ const Theme = ({ children }: ThemeProps) => {
 
   React.useEffect(() => {
     const isDarkPreferred = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = scheme === "dark" || (scheme !== "dark" && isDarkPreferred);
+    const isDark = scheme === "dark" || (scheme !== "light" && isDarkPreferred);
     if (isDark) {
       document.documentElement.classList.add("dark");
       return;
